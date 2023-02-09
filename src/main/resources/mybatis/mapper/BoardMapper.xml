@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sigong.iscall.mapper.BoardMapper">
+    <select id="getBoardList" resultType="com.sigong.iscall.dto.BoardDTO">
+        SELECT *
+        FROM board
+    </select>
+
+    <insert id="write" parameterType="com.sigong.iscall.dto.CreateBoardDTO">
+        INSERT INTO board (
+            title,
+            content,
+            writer_id,
+            file_group,
+            category_idx,
+            tag,
+            attached_file_group,
+            created_date,
+            updated_date,
+            deleted_date
+        )
+        VALUES (
+                #{title},
+                #{content},
+                #{writerId},
+                null,
+                '기타',
+                '게시판',
+                null,
+                now(),
+                now(),
+                now()
+               )
+    </insert>
+</mapper>
